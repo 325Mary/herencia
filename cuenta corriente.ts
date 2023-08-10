@@ -1,11 +1,12 @@
+import { Cuenta } from "./cuenta";
 export class CuentaCorriente extends Cuenta {
-    private sobregiro: number = 0;
+    protected sobregiro: number = 0;
 
-    constructor(saldoInicial: number, tasaAnual: number) {
-        
-       
-super(saldoInicial, tasaAnual);
-    }   
+   
+constructor(saldo: number, tasaAnual: number) {
+    super(saldo, tasaAnual);
+    
+}
 retirar(cantidad: number): void {
         if (cantidad <= this.saldo + this.sobregiro) {
             if (cantidad > this.saldo) {
@@ -20,11 +21,27 @@ retirar(cantidad: number): void {
             console.log("Saldo insuficiente (incluyendo sobregiro) para el retiro.");
         }
     }
+    consignar(cantidad: number): void {
+    
+            if (this.sobregiro > 0) {
+                this.saldo = cantidad - this.sobregiro;
+                this.sobregiro = 0;
+            } 
+            else {
+                super.consignar(cantidad);
+            }
+        }
 
-imprimir(): void {
-    console.log("Cuenta corriente:");
-    super.imprimir();
-    console.log("Sobregiro:", this.sobregiro);
+    extractoMensual(): void {
+        if (this.numRetiros > 4) {
+            this.comisionMensual += (this.numRetiros - 4) * 1000;
+        }
+
     }
+imprimir(): void {
+            console.log("Saldo:", this.saldo)
+            console.log("Tasa Anual:", this.tasaAnual)
+            console.log("Sobregiro:", this.sobregiro)
+        }
+    
 }
-

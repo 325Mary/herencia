@@ -1,40 +1,24 @@
 import { Cuenta } from "./cuenta";
-import { CuentaDeAhorros } from "./herencia de cuenta";
+import { CuentaDeAhorros } from "./cuenta ahorros";
 import { CuentaCorriente } from "./cuenta corriente";
-const miCuenta = new Cuenta(1000, 5); // Saldo inicial: 1000, Tasa anual: 5%
-miCuenta.consignar(500);
-miCuenta.retirar(200);
-miCuenta.extractoMensual();
+// const miCuenta = new Cuenta(1000, 5); // Saldo : 1000, Tasa anual: 5%
+// console.log("cuenta")
+// miCuenta.consignar(1000);
+// miCuenta.retirar(200);
+// miCuenta.extractoMensual();
 
-const cuentaAhorros = new CuentaDeAhorros(8000, 5); // Saldo inicial: 8000, Tasa anual: 5%
-const cuentaCorriente = new CuentaCorriente(1500, 4); // Saldo inicial: 1500, Tasa anual: 4%
+const cuentaAhorros = new CuentaDeAhorros(12000, 5); 
+const cuentaCorriente = new CuentaCorriente(20000, 4); 
 
-cuentaAhorros.
-
-cuenta
-consignar(2000);
-cuentaAhorros.retirar(500);
-cuentaAhorros.retirar(1000);
-cuentaAhorros.retirar(300);
-cuentaAhorros.
-cuentaAhorros
-
-cuentaA
-
-cuenta
-retirar(200);
-cuentaAhorros.
-cuentaAhor
-
-cuentaA
-extractoMensual();
+console.log("Cuenta ahorros")
+cuentaAhorros.consignar(3000);
+cuentaAhorros.retirar(50);
+cuentaAhorros.extractoMensual();
 cuentaAhorros.imprimir();
 
+console.log("Cuenta Corriente")
 cuentaCorriente.consignar(600);
-cuentaCorriente.
-cuentaCorriente
-retirar(200);
-cuentaCorriente.retirar(1500);
+cuentaCorriente.retirar(200);
 cuentaCorriente.extractoMensual();
 cuentaCorriente.imprimir();
 

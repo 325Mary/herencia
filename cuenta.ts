@@ -1,19 +1,32 @@
 export class Cuenta {
-    private saldo: number;
-    private numConsignaciones: number = 0;
-    private numRetiros: number = 0;
-    private  tasaAnual: number;
-    private comisionMensual : number = 0;
+    protected saldo: number;
+    protected numConsignaciones: number = 0;
+    protected numRetiros: number = 0;
+    protected  tasaAnual: number;
+    protected comisionMensual : number = 0;
 
-    constructor(saldoInicial: number, tasaAnual: number) {
-        this.saldo = saldoInicial;
+    constructor(saldo: number, tasaAnual: number) {
+        this.saldo = saldo;
         this.tasaAnual = tasaAnual;
     }
-    consignar(cantidad: number): void {
+    public getSaldo():number{
+        return this.saldo
+    }
+    public getTasaAnual():number{
+        return this.tasaAnual
+    }
+
+    public setSaldo(saldo:number){
+        this.saldo = saldo
+    }
+    public setTasaAnual(tasaAnual: number){
+        this.tasaAnual = tasaAnual
+    }
+    public consignar(cantidad: number): void {
         this.saldo += cantidad;
         this.numConsignaciones++;
     }
-    retirar(cantidad: number): void {
+    public retirar(cantidad: number): void {
         
         if (cantidad <= this.saldo) {           
         this.saldo -= cantidad;
@@ -22,24 +35,24 @@ export class Cuenta {
         else {console.log("Saldo insuficiente para el retiro.");
      }
     }
-    private calcularInteresMensual(): number {
+    public  calcularInteresMensual(): number {
         return (this.saldo * this.tasaAnual) / 12 / 100;
     }
-    calcularComisionMensual(): void {
+    public calcularComisionMensual(): void {
         this.saldo -= this.comisionMensual;
     }
-    extractoMensual(): void {
+    public extractoMensual(): void {
         this.calcularComisionMensual();
         const interes = this.calcularInteresMensual();
         this.saldo += interes;
         console.log("Extracto mensual:");
-        this.imprimir();
+        // this.imprimir();
     }
-    imprimir(): void {
-        console.log("Saldo:", this.saldo);
-        console.log("Número de consignaciones:", this.numConsignaciones);
-        console.log("Número de retiros:", this.numRetiros);
-        console.log("Tasa anual:", this.tasaAnual);
-        console.log("Comisión mensual:", this.comisionMensual);
-    }
+    // imprimir(): void {
+    //     console.log("Saldo:", this.saldo);
+    //     console.log("Número de consignaciones:", this.numConsignaciones);
+    //     console.log("Número de retiros:", this.numRetiros);
+    //     console.log("Tasa anual:", this.tasaAnual);
+    //     console.log("Comisión mensual:", this.comisionMensual);
+    // }
 }
